@@ -33,3 +33,7 @@ istream& read_hw(istream& in, vector<double>& h){
   }
   return in;
 }
+
+bool compare(const Student_info& s1 , const Student_info& s2){
+  return s1.name > s2.name;
+}

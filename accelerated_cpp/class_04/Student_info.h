@@ -13,5 +13,6 @@ struct Student_info {
 
 std::istream& read(std::istream& in, Student_info& s);
 std::istream& read_hw(std::istream& in, std::vector<double>& h);
+bool compare(const Student_info& s1 , const Student_info& s2);
 
 #endif

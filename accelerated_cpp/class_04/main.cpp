@@ -38,12 +38,13 @@ int main (int argc, char ** argv){
   sort(students.begin(), students.end(), compare);
 
   try{
-    int i ;
+    vector<Student_info>::size_type i;
     double score;
     for (i=0; i<students.size(); i++){
       score = grade(students[i]);
-      cout << "[name] --" << students[i].name << "\t";
-      cout << "score: " << score << endl;
+      cout << "\n{Students} ^>-<^" << endl;
+      cout << "[name]: " << students[i].name << "\t";
+      cout << "[score]: " << score << endl;
     }
   }catch(domain_error e){
     e.what();
@@ -51,8 +52,4 @@ int main (int argc, char ** argv){
   }
 
   return 0;
-}
-
-bool compare(const Student_info& s1 , const Student_info& s2){
-  return s1.name > s2.name;
 }
