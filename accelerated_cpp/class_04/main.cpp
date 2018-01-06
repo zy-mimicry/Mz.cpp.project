@@ -18,9 +18,21 @@ bool compare(const Student_info& s1 , const Student_info& s2);
 int main (int argc, char ** argv){
   Student_info student;
   vector<Student_info> students;
+  char flag;
 
-  while (cout << "Studeng @@" <<endl, read(cin, student)){
+  while (cout << "\nStudent: @_@" <<endl, read(cin, student)){
     students.push_back(student);
+  unknow:
+    cout << "Continue ? [y/n]" ;
+    cin >> flag;
+    if (flag == 'y')
+      continue;
+    else if (flag == 'n')
+      break;
+    else{
+      cout << "Unknow answer." << endl;
+      goto unknow;
+    }
   }
 
   sort(students.begin(), students.end(), compare);
