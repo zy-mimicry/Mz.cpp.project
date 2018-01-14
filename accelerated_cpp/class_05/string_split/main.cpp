@@ -12,7 +12,9 @@ int main (int argc, char** argv){
   string in_string;
   double flag = 0;
 
-  while (flag != 2 && ( cout << "What's your frame?" << endl, getline(cin, in_string) )){
+  while (flag != 2 &&
+         ( cout << "What's your frame?" << endl,
+           getline(cin, in_string) )){
     temp_frame = split(in_string);
     vector<string>::size_type i = 0;
     if (flag == 0){

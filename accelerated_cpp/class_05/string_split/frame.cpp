@@ -56,13 +56,14 @@ vector<string> hcat(vector<string>& top, vector<string>& bottom){
 
 vector<string> vcat(vector<string>& left, vector<string>& right){
   vector<string> ret;
-  string context;
   string::size_type max_width = width(left) + 1;
   vector<string>::size_type i = 0 , j = 0;
 
   while (i != left.size() || j != right.size()){
+    string context;
+
     if (i != left.size()){
-      context = left[i];
+      context += left[i];
       ++i;
     }
 
