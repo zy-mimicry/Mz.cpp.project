@@ -4,10 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
-<<<<<<< Updated upstream
-=======
 #include <list>
->>>>>>> Stashed changes
 
 struct Student_info {
   std::string name;
@@ -19,13 +16,10 @@ std::istream& read(std::istream& in, Student_info& s);
 std::istream& read_hw(std::istream& in, std::vector<double>& h);
 bool compare(const Student_info& s1 , const Student_info& s2);
 
-<<<<<<< Updated upstream
-=======
 //bool fgrade(Student_info& s);
 std::vector<Student_info> extract_fails(std::vector<Student_info>& s);
 std::vector<Student_info> extract_fails_v2(std::vector<Student_info>& s);
 std::vector<Student_info> extract_fails_v3(std::vector<Student_info>& s);
 std::list<Student_info> extract_fails_v4(std::list<Student_info>& s);
 
->>>>>>> Stashed changes
 #endif

@@ -12,12 +12,7 @@ using std::endl;
 using std::domain_error;
 using std::vector;
 using std::sort;
-<<<<<<< Updated upstream
-
-bool compare(const Student_info& s1 , const Student_info& s2);
-=======
 using std::list;
->>>>>>> Stashed changes
 
 int main (int argc, char ** argv){
   Student_info student;
@@ -41,22 +36,6 @@ int main (int argc, char ** argv){
 
   sort(students.begin(), students.end(), compare);
 
-<<<<<<< Updated upstream
-  try{
-    vector<Student_info>::size_type i;
-    double score;
-    for (i=0; i<students.size(); i++){
-      score = grade(students[i]);
-      cout << "\n{Students} ^>-<^" << endl;
-      cout << "[name]: " << students[i].name << "\t";
-      cout << "[score]: " << score << endl;
-    }
-  }catch(domain_error e){
-    e.what();
-    return 1;
-  }
-
-=======
   // vector<Student_info> fail = extract_fails(students);
   // vector<Student_info> fail = extract_fails_v2(students);
   // vector<Student_info> fail = extract_fails_v3(students);
@@ -98,6 +77,5 @@ int main (int argc, char ** argv){
   //   return 1;
   // }
 
->>>>>>> Stashed changes
   return 0;
 }
