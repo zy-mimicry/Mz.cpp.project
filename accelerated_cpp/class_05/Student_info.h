@@ -21,5 +21,7 @@ std::vector<Student_info> extract_fails(std::vector<Student_info>& s);
 std::vector<Student_info> extract_fails_v2(std::vector<Student_info>& s);
 std::vector<Student_info> extract_fails_v3(std::vector<Student_info>& s);
 std::list<Student_info> extract_fails_v4(std::list<Student_info>& s);
+std::vector<Student_info> extract_fails_v5(std::vector<Student_info>& s);
+std::vector<Student_info> extract_fails_v6(std::vector<Student_info>& s);
 
 #endif

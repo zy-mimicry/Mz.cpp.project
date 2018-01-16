@@ -39,43 +39,47 @@ int main (int argc, char ** argv){
   // vector<Student_info> fail = extract_fails(students);
   // vector<Student_info> fail = extract_fails_v2(students);
   // vector<Student_info> fail = extract_fails_v3(students);
-  list<Student_info> ss;
-  vector<Student_info>::size_type k;
-  for (k=0; k<students.size(); ++k){
-    ss.push_back(students[k]);
-  }
-
-  list<Student_info> fail = extract_fails_v4(ss);
-
-  list<Student_info>::iterator iter ;
-
-  for (iter = ss.begin(); iter != ss.end(); ++iter){
-    cout << "{success} : " << iter->name<<endl;
-  }
-  for (iter = fail.begin(); iter != fail.end(); ++iter){
-    cout << "{failure} : " << iter->name<<endl;
-  }
-
+  // list<Student_info> ss;
+  // vector<Student_info>::size_type k;
   // for (k=0; k<students.size(); ++k){
-  //   cout << "{success} : " << students[k].name<<endl;
+  //   ss.push_back(students[k]);
   // }
-  // for (k=0; k<fail.size(); ++k){
-  //   cout << "{failure} : " << fail[k].name<<endl;
+  // list<Student_info> fail = extract_fails_v4(ss);
+  // vector<Student_info>::iterator iter ;
+
+  // for (iter = ss.begin(); iter != ss.end(); ++iter){
+  //   cout << "{success} : " << iter->name<<endl;
+  // }
+  // for (iter = fail.begin(); iter != fail.end(); ++iter){
+  //   cout << "{failure} : " << iter->name<<endl;
   // }
 
-  // try{
-  //   vector<Student_info>::size_type i;
-  //   double score;
-  //   for (i=0; i<students.size(); i++){
-  //     score = grade(students[i]);
-  //     cout << "\n{Students} ^>-<^" << endl;
-  //     cout << "[name]: " << students[i].name << "\t";
-  //     cout << "[score]: " << score << endl;
-  //   }
-  // }catch(domain_error e){
-  //   e.what();
-  //   return 1;
-  // }
+  // vector<Student_info> fail = extract_fails_v5(students);
+  vector<Student_info>::size_type k ;
+  vector<Student_info> fail = extract_fails_v6(students);
+  vector<Student_info>::iterator iter ;
+
+
+  for (k=0; k<students.size(); ++k){
+    cout << "{success} : " << students[k].name<<endl;
+  }
+  for (k=0; k<fail.size(); ++k){
+    cout << "{failure} : " << fail[k].name<<endl;
+  }
+
+  try{
+    vector<Student_info>::size_type i;
+    double score;
+    for (i=0; i<students.size(); i++){
+      score = grade(students[i]);
+      cout << "\n{Students} ^>-<^" << endl;
+      cout << "[name]: " << students[i].name << "\t";
+      cout << "[score]: " << score << endl;
+    }
+  }catch(domain_error e){
+    e.what();
+    return 1;
+  }
 
   return 0;
 }
