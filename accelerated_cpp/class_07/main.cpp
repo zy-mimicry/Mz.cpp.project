@@ -61,6 +61,7 @@ void display_all_rules(Grammar& g){
     for (Rule_collection::iterator i = c.begin();
          i != c.end();
          ++i){
+      cout << "R_c/ " ;
       for (Rule::iterator _i = (*i).begin();
            _i != (*i).end();
            ++_i){
@@ -69,6 +70,7 @@ void display_all_rules(Grammar& g){
         else
           cout << *_i;
       }
+      cout << " " ;
     }
     cout << endl;
   }
@@ -90,18 +92,6 @@ Grammar read_grammar(istream& in)
 
   return ret;
 }
-
-// int nrand(int n){
-//   if (n < 0 || n >= RAND_MAX)
-//     throw domain_error("over flow.");
-//   int r;
-//   const int size = RAND_MAX / n;
-
-//   do r = rand() / size;
-//   while (r >= n);
-
-//   return r;
-// }
 
 template <class IO>
 IO nrand( IO io){
@@ -146,7 +136,7 @@ void gen_aux(const Grammar& g, string word, vector<string>& s_ret){
 
 vector<string> gen_sentence(const Grammar& g){
   vector<string> ret;
-  gen_aux(g, "<verb>", ret);
+  gen_aux(g, "<sentence>", ret);
   return ret;
 }
 
