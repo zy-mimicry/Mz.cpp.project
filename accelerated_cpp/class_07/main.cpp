@@ -64,7 +64,10 @@ void display_all_rules(Grammar& g){
       for (Rule::iterator _i = (*i).begin();
            _i != (*i).end();
            ++_i){
-        cout << *_i;
+        if (_i != (*i).begin())
+          cout << "," << *_i;
+        else
+          cout << *_i;
       }
     }
     cout << endl;
