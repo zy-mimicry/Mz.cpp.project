@@ -51,6 +51,26 @@ void display(vector<string>& s){
   }
 }
 
+void display_all_rules(Grammar& g){
+  for (Grammar::iterator it = g.begin();
+       it != g.end();
+       ++it){
+    cout << it->first << ": " ;
+    Rule_collection& c = it->second;
+
+    for (Rule_collection::iterator i = c.begin();
+         i != c.end();
+         ++i){
+      for (Rule::iterator _i = (*i).begin();
+           _i != (*i).end();
+           ++_i){
+        cout << *_i;
+      }
+    }
+    cout << endl;
+  }
+}
+
 Grammar read_grammar(istream& in)
 {
   Grammar ret;
@@ -62,6 +82,8 @@ Grammar read_grammar(istream& in)
     if (!v.empty())
       ret[v[0]].push_back(Rule(v.begin()+1, v.end()));
   }
+
+  display_all_rules(ret);
 
   return ret;
 }
@@ -121,7 +143,7 @@ void gen_aux(const Grammar& g, string word, vector<string>& s_ret){
 
 vector<string> gen_sentence(const Grammar& g){
   vector<string> ret;
-  gen_aux(g, "<sentence>", ret);
+  gen_aux(g, "<verb>", ret);
   return ret;
 }
 
