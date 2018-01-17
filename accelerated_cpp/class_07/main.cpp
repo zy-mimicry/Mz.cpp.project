@@ -6,6 +6,7 @@
 #include <map>
 #include <cstdlib>
 #include <iomanip>
+#include <ctime>
 
 using namespace std;
 
@@ -93,22 +94,38 @@ Grammar read_grammar(istream& in)
   return ret;
 }
 
-template <class IO>
-IO nrand( IO io){
+int nrand( int n){
 
-  if (io < 0 || io >= RAND_MAX)
+  if (n < 0 || n >= RAND_MAX)
     throw domain_error("Argument to nrand is out of range.");
 
-  IO r;
-  IO size = RAND_MAX / io ;
+  int r;
+  srand(std::time(0));
+  const int size = RAND_MAX / n ;
 
   do
     r = rand() / size;
-  while (r >= io);
+  while (r >= n);
   cout << r << " :rand" << endl;
-
   return r;
 }
+
+// template <class IO>
+// IO nrand( IO io){
+
+//   if (io < 0 || io >= RAND_MAX)
+//     throw domain_error("Argument to nrand is out of range.");
+
+//   IO r;
+//   IO size = RAND_MAX / io ;
+
+//   do
+//     r = rand() / size;
+//   while (r >= io);
+//   cout << r << " :rand" << endl;
+
+//   return r;
+// }
 
 bool is_backeted(const string& word){
   return (!word.empty() && word[0] == '<' && word[word.size()-1] == '>');
@@ -121,6 +138,7 @@ void gen_aux(const Grammar& g, string word, vector<string>& s_ret){
     Grammar::const_iterator it = g.find(word);
     if (it == g.end())
       throw domain_error("Empty Rules.");
+    cout << "type: " << it->first << endl;
 
     const Rule_collection& c = it->second;
 
@@ -129,6 +147,7 @@ void gen_aux(const Grammar& g, string word, vector<string>& s_ret){
     for (Rule::const_iterator iter = r.begin();
          iter != r.end();
          ++iter){
+      cout << "rule's:" << *iter << endl;
       gen_aux(g, *iter, s_ret);
     }
   }
