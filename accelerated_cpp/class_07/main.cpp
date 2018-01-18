@@ -113,6 +113,7 @@ int nrand( int n){
 // template <class IO>
 // IO nrand( IO io){
 
+//   srand(std::time(0));
 //   if (io < 0 || io >= RAND_MAX)
 //     throw domain_error("Argument to nrand is out of range.");
 
