@@ -44,7 +44,7 @@ private:
 
   void uncreate();
 
-  void graw();
-  void unchecked_append();
+  void grow();
+  void unchecked_append(const T&);
 
 };

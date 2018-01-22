@@ -65,7 +65,6 @@ typename Vec<T>::size_type Vec<T>::size() const {
 
 template<class T>
 void Vec<T>::push_back(T& t){
-
 }
 
 
@@ -82,12 +81,20 @@ void Vec<T>::uncreate(){
 }
 
 template<class T>
-void Vec<T>::graw(){
-  iterator new_data = alloc.allocate(max(ptrdiff_t(1), 2*(limit-data)));
+void Vec<T>::grow(){
+  size_type new_size = max(ptrdiff_t(1), 2*(limit-data));
+  iterator new_data = alloc.allocate(new_size);
+  iterator new_avail = uninitialized_copy(data,limit,new_data); //这里的返回值?
+  uncreate();
+  data = new_data;
+  avail = new_avail;
+  limit = new_data + new_size;
 }
 
 template<class T>
-void Vec<T>::unchecked_append(){}
+void Vec<T>::unchecked_append(const T& val){
+  alloc.construct(avail++, val);
+}
 
 //重载 create函数
 template<class T>
