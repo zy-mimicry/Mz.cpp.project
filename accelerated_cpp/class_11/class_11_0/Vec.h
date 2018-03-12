@@ -1,5 +1,9 @@
+#ifndef MM_Student_info_h
+#define MM_Student_info_h
+
 #include <memory>
 #include <cstddef>
+#include <string>
 
 template <class T>
 class Vec {
@@ -12,6 +16,7 @@ public:
 
   //默认构造,加上三位一体
   Vec();
+  // Vec(){create();}
   explicit Vec(size_type n, const T& = T());
   Vec(const Vec&);
   ~Vec();
@@ -48,3 +53,5 @@ private:
   void unchecked_append(const T&);
 
 };
+
+#endif

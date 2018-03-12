@@ -1,7 +1,6 @@
 #include "Vec.h"
-//#include <iterator>
-using namespace std;
 
+using namespace std;
 
 //默认构造
 template<class T>
@@ -9,11 +8,15 @@ Vec<T>::Vec(){ create();}
 
 //其他需要明确指定的构造
 template<class T>
-Vec<T>::Vec(typename Vec<T>::size_type n, const T& t){}
+Vec<T>::Vec(typename Vec<T>::size_type n, const T& t){
+  create(n,t);
+}
 
 //复制构造
 template<class T>
-Vec<T>::Vec(const Vec& v) {}
+Vec<T>::Vec(const Vec& v) {
+  create(v.begin(), v.end());
+}
 
 //析构
 template<class T>
@@ -23,7 +26,13 @@ Vec<T>::~Vec(){
 
 //赋值操作
 template<class T>
-Vec<T>& Vec<T>::operator= (const Vec<T>& v){}
+Vec<T>& Vec<T>::operator= (const Vec<T>& v){
+  if (this != &v){
+    uncreate();
+    create(v.begin(), v.end());
+  }
+  return *this;
+}
 
 //索引操作
 template<class T>
@@ -65,6 +74,9 @@ typename Vec<T>::size_type Vec<T>::size() const {
 
 template<class T>
 void Vec<T>::push_back(T& t){
+  if (limit == avail)
+    grow();
+  unchecked_append(t);
 }
 
 
@@ -74,7 +86,7 @@ void Vec<T>::uncreate(){
   if (data){
     iterator it = avail;
     while (it != data)
-      alloc.destory(--it); //看到这里的--it就是为了实现逆序删除元素.
+      alloc.destroy(--it); //看到这里的--it就是为了实现逆序删除元素.
     alloc.deallocate(data,limit-data);
   }
   data = limit = avail = 0;
@@ -99,7 +111,7 @@ void Vec<T>::unchecked_append(const T& val){
 //重载 create函数
 template<class T>
 void Vec<T>::create(){
-  return data = avail = limit = 0;
+  data = avail = limit = 0;
 }
 
 template<class T>
@@ -114,3 +126,6 @@ void Vec<T>::create(Vec::const_iterator i, Vec::const_iterator j){
   data = alloc.allocate(j - i);
   uninitialized_copy(i, j, data);
 }
+
+template class Vec<string>;
+template class Vec<int>;
